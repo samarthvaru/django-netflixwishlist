@@ -1,0 +1,56 @@
+{% extends "accounts/main.html"%}
+
+{% block content%}
+{% include 'accounts/status.html' %}
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <a class="btn btn-md btn-info" href="{% url 'list_Add_Page' %}">Add new Movie</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md">
+
+        &nbsp;&nbsp;<h5>&nbsp;&nbsp; Last 5 Movies: </h5>
+
+
+        <br>
+
+        <div align="center"><a href="{% url 'filterPage' %}" class="btn btn-md">Filter</a></div>
+        <br>
+
+
+        <div class="card card-body table-wrapper-scroll-y my-custom-scrollbar" >
+
+
+            <table class="table table-sm" >
+                <tr>
+
+                    <th>Movie Name</th>
+                    <th>StreamingService</th>
+                    <th>BingeInterest</th>
+                    <th>Note</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.streamService }}</td>
+                    <td>{{ item.bingeinterest}}</td>
+                    <td>{{ item.note }}</td>
+                    <td><a href="{% url 'update_List' item.id %}" class="btn btn-md btn-info">Update</a></td>
+                    <td><a href="{% url 'delete_order' item.id %}" class="btn btn-md btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

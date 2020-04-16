@@ -1,0 +1,36 @@
+{% extends "accounts/main.html"%}
+
+{% block content%}
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+
+                <p>{{ form.name.label }}
+                    {{ form.name}}</p>
+                <p>
+                    {{ form.tag.label }}:
+                    {{ form.tag}}
+                </p>
+                <p>
+                    {{ form.bingeinterest.label }}:
+                    {{ form.bingeinterest}}
+                </p>
+                <p>
+                    {{ form.note.label }}:
+                    {{ form.note}}
+                </p>
+                <p>
+                    {{ form.streamService.label }}:
+                    {{ form.streamService}}
+                </p>
+                <hr>
+                <input type="submit" value="Update"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
